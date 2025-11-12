@@ -1,11 +1,12 @@
 import requests
+import creds
 import schedule
 import time
 from datetime import datetime
 import pytz
 
 # Configuration
-API_KEY = 'd220f09e4cf41f261f304aed9d7bed95'  # Your OpenWeatherMap API key
+# Your OpenWeatherMap API key
 LAT = 41.8781  # Chicago latitude
 LON = -87.6298  # Chicago longitude
 TIMEZONE = pytz.timezone('America/Chicago')
@@ -15,7 +16,7 @@ def check_snow_today():
     Fetches the 5-day forecast and checks if snow is expected today in Chicago.
     Snow detection: Any weather code 600-622 in today's forecast periods.
     """
-    url = f"https://api.openweathermap.org/data/2.5/forecast?lat={LAT}&lon={LON}&appid={API_KEY}&units=metric"
+    url = f"https://api.openweathermap.org/data/2.5/forecast?lat={LAT}&lon={LON}&appid={creds.API_KEY}&units=metric"
     
     try:
         response = requests.get(url)
